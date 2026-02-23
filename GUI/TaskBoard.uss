@@ -1,0 +1,445 @@
+/* Global */
+:root {
+    flex-grow: 1;
+}
+
+.header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: rgb(56, 56, 56);
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(35, 35, 35);
+    flex-shrink: 0;
+}
+
+.title {
+    font-size: 16px;
+    -unity-font-style: bold;
+    color: rgb(220, 220, 220);
+}
+
+/* --- DYNAMIC BOARD LAYOUT (FIXED V3) --- */
+
+/* 1. ScrollView chính */
+.board-scroll-view {
+    flex-grow: 1;
+    height: 100%;
+}
+
+/* 2. Ép content container của Board giãn hết chiều cao */
+.board-scroll-view .unity-scroll-view__content-container {
+    flex-grow: 1;
+    min-height: 100%;
+}
+
+/* 3. Định hướng ROW cho container chính của Board */
+.board-scroll-view > .unity-scroll-view__viewport > .unity-scroll-view__content-container {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+/* 4. RESET lại cho ScrollView bên trong cột (để không bị ảnh hưởng bởi rule số 2) */
+.column-scroll .unity-scroll-view__content-container {
+    flex-direction: column;
+    min-height: auto; /* Trả lại auto để scroll dọc hoạt động đúng */
+    flex-grow: 1;
+}
+
+/* 5. Board Container con do user tạo */
+.board-container {
+    flex-direction: row;
+    flex-grow: 1;
+    height: 100%;
+    min-height: 100%;
+    padding: 10px;
+    background-color: transparent;
+}
+
+/* 6. Task Column */
+.task-column {
+    flex-shrink: 0;
+    margin-right: 10px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 8px;
+    padding: 10px;
+    width: 280px;
+
+    /* CHIỀU CAO: 98% khung nhìn */
+    height: 98%;
+    max-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.column-header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(70, 70, 100);
+}
+
+.column-header {
+    font-size: 14px;
+    -unity-font-style: bold;
+    color: rgb(178, 178, 255);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}
+
+.column-delete-btn {
+    background-color: transparent;
+    border-width: 0;
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+}
+
+.column-delete-btn:hover {
+    color: rgb(200, 80, 80);
+}
+
+/* Cột chứa Task: Layout dọc */
+.column-scroll {
+    flex-grow: 1;
+}
+
+/* Card Styles */
+.task-card {
+    background-color: rgb(71, 71, 82);
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border-width: 1px;
+    border-color: rgb(60, 60, 70);
+    white-space: normal;
+
+    /* FIX: Card full width */
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.task-card:hover {
+    background-color: rgb(81, 81, 92);
+    border-color: rgb(100, 100, 140);
+}
+
+.task-title {
+    font-size: 13px;
+    -unity-font-style: bold;
+    color: rgb(240, 240, 240);
+}
+
+.task-description {
+    font-size: 11px;
+    color: rgb(180, 180, 180);
+    margin-top: 5px;
+}
+
+.card-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.task-date {
+    font-size: 10px;
+    color: rgb(130, 130, 130);
+}
+
+.delete-button {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+    background-color: rgb(153, 51, 51);
+    color: white;
+    border-width: 0;
+    padding: 0;
+    border-radius: 3px;
+}
+
+.delete-button:hover {
+    background-color: rgb(200, 60, 60);
+}
+
+/* Dialog Overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.dialog {
+    width: 600px;
+    max-width: 95%;
+    height: 85%;
+    max-height: 90%;
+    background-color: rgb(30, 30, 30);
+    border-radius: 12px;
+    border-width: 1px;
+    border-color: rgb(80, 80, 100);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-header {
+    background-color: rgb(88, 101, 242);
+    padding: 18px 20px;
+    flex-shrink: 0;
+}
+
+.dialog-title-text {
+    font-size: 16px;
+    -unity-font-style: bold;
+    color: white;
+}
+
+/* Scroll Body */
+.dialog-body-scroll {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+}
+
+.dialog-content-container {
+    padding: 20px;
+}
+
+/* Footer Fixed */
+.dialog-footer {
+    padding: 15px 20px;
+    background-color: rgb(35, 35, 35);
+    border-top-width: 1px;
+    border-top-color: rgb(60, 60, 60);
+    flex-shrink: 0;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Inputs & Drop Area */
+.field-label {
+    color: rgb(180, 180, 180);
+    font-size: 12px;
+    -unity-font-style: bold;
+    margin-bottom: 5px;
+}
+
+.modern-input > .unity-base-text-field__input {
+    background-color: rgb(18, 18, 18);
+    border-width: 1px;
+    border-color: rgb(60, 60, 60);
+    border-radius: 4px;
+    padding: 8px;
+    color: rgb(240, 240, 240);
+    font-size: 13px;
+}
+
+.modern-input > .unity-base-text-field__input:focus {
+    border-color: rgb(88, 101, 242);
+}
+
+.input-multiline {
+    height: 60px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+/* FIX HEIGHT: Increased from 200px to 280px to show roughly 3 rows */
+.drop-area {
+    margin-top: 0;
+    margin-bottom: 15px;
+    flex-grow: 1;
+    min-height: 120px;
+    height: 280px;
+    border-width: 1px;
+    border-color: rgb(80, 80, 80);
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.drop-area-hover {
+    border-color: rgb(88, 101, 242);
+    background-color: rgba(88, 101, 242, 0.1);
+}
+
+.drop-area-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    color: rgb(100, 100, 100);
+    font-size: 11px;
+    -unity-font-style: italic;
+    picking-mode: ignore;
+}
+
+.attached-files-scroll {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.attached-files-container {
+    padding: 5px;
+    flex-wrap: wrap;
+}
+
+.grid-view {
+    flex-direction: row;
+}
+
+.grid-view .file-item {
+    width: 60px;
+    height: 70px;
+    margin: 3px;
+    flex-grow: 1;
+    background-color: rgb(50, 50, 50);
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.grid-view .file-icon-image {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 4px;
+    background-size: cover;
+}
+
+.grid-view .file-name {
+    font-size: 9px;
+    color: rgb(200, 200, 200);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 55px;
+}
+
+.list-view {
+    flex-direction: column;
+}
+
+.list-view .file-item {
+    flex-direction: row;
+    width: 98%;
+    height: 28px;
+    margin-bottom: 2px;
+    background-color: rgb(45, 45, 45);
+    border-radius: 3px;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.list-view .file-icon-image {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-size: cover;
+}
+
+.list-view .file-name {
+    font-size: 11px;
+    color: rgb(220, 220, 220);
+    flex-grow: 1;
+}
+
+.icon-button {
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+    color: rgb(200, 200, 200);
+}
+
+.icon-button:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+.active-view-btn {
+    background-color: rgb(88, 101, 242);
+    color: white;
+}
+
+.dropdown-row {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    flex-shrink: 0;
+}
+
+.modern-dropdown {
+    margin-top: 5px;
+}
+
+.modern-dropdown > .unity-base-field__input {
+    background-color: rgb(20, 20, 20);
+    border-color: rgb(60, 60, 60);
+    border-radius: 4px;
+    padding: 6px;
+    color: rgb(220, 220, 220);
+}
+
+.primary-button {
+    background-color: rgb(76, 102, 204);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    border-width: 0;
+    -unity-font-style: bold;
+}
+
+.primary-button:hover {
+    background-color: rgb(96, 122, 224);
+}
+
+.primary-button-large {
+    background-color: rgb(88, 101, 242);
+    color: white;
+    font-size: 13px;
+    -unity-font-style: bold;
+    padding: 12px 25px;
+    border-radius: 6px;
+    border-width: 0;
+    flex-grow: 1;
+    margin-left: 5px;
+}
+
+.primary-button-large:hover {
+    background-color: rgb(71, 82, 196);
+}
+
+.secondary-button {
+    background-color: rgb(70, 70, 70);
+    color: rgb(220, 220, 220);
+    padding: 12px 25px;
+    border-radius: 6px;
+    border-width: 0;
+    flex-grow: 1;
+    margin-right: 5px;
+}
+
+.secondary-button:hover {
+    background-color: rgb(90, 90, 90);
+}

@@ -1,0 +1,77 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="root" style="flex-grow: 1;">
+        <!-- Header -->
+        <ui:VisualElement name="header" class="header">
+            <ui:Label text="Focus - Task Management" name="title-label" class="title" />
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Button text="+ Add Column" name="add-column-button" class="secondary-button" />
+                <ui:Button text="+ Quick Capture" name="add-task-button" class="primary-button" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        
+        <!-- Board Container (ScrollView Ngang) -->
+        <ui:ScrollView name="board-scroll-view" scroll-direction="Horizontal" class="board-scroll-view">
+            <ui:VisualElement name="board-container" class="board-container">
+                <!-- Cột sinh ra tại đây -->
+            </ui:VisualElement>
+        </ui:ScrollView>
+        
+        <!-- Quick Capture Overlay -->
+        <ui:VisualElement name="quick-capture-overlay" class="overlay">
+            <ui:VisualElement name="quick-capture-dialog" class="dialog">
+                <!-- Header -->
+                <ui:VisualElement name="dialog-header" class="dialog-header">
+                    <ui:Label text="⚡ Quick Capture" name="dialog-title-label" class="dialog-title-text" />
+                </ui:VisualElement>
+                
+                <!-- BODY LÀ SCROLLVIEW -->
+                <ui:ScrollView name="dialog-body-scroll" class="dialog-body-scroll">
+                    <ui:VisualElement name="dialog-content-container" class="dialog-content-container">
+                        <!-- Inputs -->
+                        <ui:Label text="Title" class="field-label" />
+                        <ui:TextField name="quick-title" class="modern-input" />
+                        
+                        <ui:Label text="Description" class="field-label" style="margin-top: 10px;" />
+                        <ui:TextField name="quick-description" multiline="true" class="modern-input input-multiline" />
+                        
+                        <!-- Attachments Header -->
+                        <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: flex-end; margin-bottom: 5px; margin-top: 10px;">
+                            <ui:Label text="Attachments" class="field-label" style="margin-bottom: 0;" />
+                            <ui:VisualElement name="view-switcher" style="flex-direction: row;">
+                                <ui:Button name="btn-grid-view" class="icon-button" tooltip="Grid View"><ui:Label text="田" /></ui:Button>
+                                <ui:Button name="btn-list-view" class="icon-button" tooltip="List View"><ui:Label text="☰" /></ui:Button>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        
+                        <!-- Drop Area -->
+                        <ui:VisualElement name="asset-drop-area" class="drop-area">
+                            <ui:Label text="Drag files here to attach..." class="drop-area-label" />
+                            <ui:ScrollView name="attached-files-scroll" class="attached-files-scroll" mode="Vertical">
+                                <ui:VisualElement name="attached-files-container" class="attached-files-container grid-view" />
+                            </ui:ScrollView>
+                        </ui:VisualElement>
+                        
+                        <!-- Dropdowns -->
+                        <ui:VisualElement name="dropdown-container" class="dropdown-row">
+                            <ui:VisualElement style="flex-grow: 1; margin-right: 10px;">
+                                <ui:Label text="Board" class="field-label" />
+                                <ui:DropdownField name="board-dropdown" class="modern-dropdown" />
+                            </ui:VisualElement>
+                            
+                            <ui:VisualElement style="flex-grow: 1;">
+                                <ui:Label text="Column" class="field-label" />
+                                <ui:DropdownField name="column-dropdown" class="modern-dropdown" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:ScrollView>
+                
+                <!-- Footer Fixed -->
+                <ui:VisualElement name="dialog-footer" class="dialog-footer">
+                    <ui:Button text="Cancel (Esc)" name="cancel-button" class="secondary-button" />
+                    <ui:Button text="Create Card (Enter)" name="create-button" class="primary-button-large" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

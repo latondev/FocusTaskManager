@@ -1,0 +1,11 @@
+{
+  "name": "com.latondev.focus-task",
+  "version": "1.0.0",
+  "displayName": "Focus Task",
+  "description": "Description for Focus Task.",
+  "unity": "6000.0",
+  "author": {
+    "name": "latondev"
+  },
+  "dependencies": {}
+}

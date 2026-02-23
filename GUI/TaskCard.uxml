@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="task-card" class="task-card">
+        <ui:Label name="task-title" text="Task Title" class="task-title" />
+        <ui:Label name="task-description" text="Task description goes here" class="task-description" />
+        
+        <ui:VisualElement name="card-footer" class="card-footer">
+            <ui:Label name="task-date" text="Jan 19" class="task-date" />
+            <ui:Button name="delete-button" text="×" class="delete-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

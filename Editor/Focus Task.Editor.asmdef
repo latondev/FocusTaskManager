@@ -1,0 +1,12 @@
+{
+  "name": "Focus Task.Editor",
+  "rootNamespace": "Focus Task.Editor",
+  "references": ["Focus Task.Runtime"],
+  "includePlatforms": ["Editor"],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

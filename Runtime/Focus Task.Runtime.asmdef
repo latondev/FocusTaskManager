@@ -1,0 +1,12 @@
+{
+  "name": "Focus Task.Runtime",
+  "rootNamespace": "Focus Task",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
