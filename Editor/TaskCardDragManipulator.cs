@@ -134,24 +134,24 @@ public class TaskDragManipulator : PointerManipulator
     {
         ghost = new VisualElement();
         ghost.style.position = Position.Absolute;
-        ghost.style.width = target.resolvedStyle.width;
-        ghost.style.height = target.resolvedStyle.height;
-        ghost.style.backgroundColor = new Color(0.15f, 0.15f, 0.17f, 0.9f); // Màu nền tối
+        ghost.style.width = target.layout.width; // Use layout width instead of resolvedStyle to ensure accurate sizing
+        ghost.style.height = target.layout.height;
+        ghost.style.backgroundColor = new Color(0.16f, 0.16f, 0.19f, 0.95f); // #292930 matching the card
 
         // Bo góc
-        ghost.style.borderTopLeftRadius = 8;
-        ghost.style.borderBottomLeftRadius = 8;
-        ghost.style.borderTopRightRadius = 8;
-        ghost.style.borderBottomRightRadius = 8;
+        ghost.style.borderTopLeftRadius = 6;
+        ghost.style.borderBottomLeftRadius = 6;
+        ghost.style.borderTopRightRadius = 6;
+        ghost.style.borderBottomRightRadius = 6;
 
-        // Viền tím (Style thủ công từng cạnh)
-        float borderWidth = 1f;
+        // Viền xanh khi kéo (Premium highlight)
+        float borderWidth = 1.5f;
         ghost.style.borderTopWidth = borderWidth;
         ghost.style.borderBottomWidth = borderWidth;
         ghost.style.borderLeftWidth = borderWidth;
         ghost.style.borderRightWidth = borderWidth;
 
-        Color borderColor = new Color(0.4f, 0.4f, 1f); // Tím xanh
+        Color borderColor = new Color(0.29f, 0.41f, 1f); // #4b68ff Focus Blue Highlight
         ghost.style.borderTopColor = borderColor;
         ghost.style.borderBottomColor = borderColor;
         ghost.style.borderLeftColor = borderColor;

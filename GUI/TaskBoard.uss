@@ -1,72 +1,67 @@
 /* Global */
 :root {
     flex-grow: 1;
+    background-color: #1a1a1e; /* Dark theme background */
 }
 
 .header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
-    background-color: rgb(56, 56, 56);
+    padding: 12px 20px;
+    background-color: #24242b;
     border-bottom-width: 1px;
-    border-bottom-color: rgb(35, 35, 35);
+    border-bottom-color: #151518;
     flex-shrink: 0;
 }
 
 .title {
-    font-size: 16px;
+    font-size: 18px;
     -unity-font-style: bold;
-    color: rgb(220, 220, 220);
+    color: #e5e5e5;
 }
 
-/* --- DYNAMIC BOARD LAYOUT (FIXED V3) --- */
+/* --- DYNAMIC BOARD LAYOUT --- */
 
-/* 1. ScrollView chính */
 .board-scroll-view {
     flex-grow: 1;
     height: 100%;
 }
 
-/* 2. Ép content container của Board giãn hết chiều cao */
 .board-scroll-view .unity-scroll-view__content-container {
     flex-grow: 1;
     min-height: 100%;
 }
 
-/* 3. Định hướng ROW cho container chính của Board */
 .board-scroll-view > .unity-scroll-view__viewport > .unity-scroll-view__content-container {
     flex-direction: row;
     align-items: flex-start;
 }
 
-/* 4. RESET lại cho ScrollView bên trong cột (để không bị ảnh hưởng bởi rule số 2) */
 .column-scroll .unity-scroll-view__content-container {
     flex-direction: column;
-    min-height: auto; /* Trả lại auto để scroll dọc hoạt động đúng */
+    min-height: auto;
     flex-grow: 1;
 }
 
-/* 5. Board Container con do user tạo */
 .board-container {
     flex-direction: row;
     flex-grow: 1;
     height: 100%;
     min-height: 100%;
-    padding: 10px;
+    padding: 15px;
     background-color: transparent;
 }
 
-/* 6. Task Column */
+/* Task Column */
 .task-column {
     flex-shrink: 0;
-    margin-right: 10px;
-    background-color: rgb(46, 46, 46);
-    border-radius: 8px;
-    padding: 10px;
+    margin-right: 15px;
+    background-color: #222226;
+    border-radius: 6px;
+    padding: 12px;
     width: 280px;
 
-    /* CHIỀU CAO: 98% khung nhìn */
     height: 98%;
     max-height: 100%;
 
@@ -78,16 +73,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom-width: 1px;
-    border-bottom-color: rgb(70, 70, 100);
 }
 
 .column-header {
     font-size: 14px;
     -unity-font-style: bold;
-    color: rgb(178, 178, 255);
+    color: #d8d8d8;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -97,14 +90,14 @@
 .column-delete-btn {
     background-color: transparent;
     border-width: 0;
-    color: rgb(100, 100, 100);
+    color: #666;
     font-size: 14px;
     width: 20px;
     height: 20px;
 }
 
 .column-delete-btn:hover {
-    color: rgb(200, 80, 80);
+    color: #ff5e5e;
 }
 
 /* Cột chứa Task: Layout dọc */
@@ -114,61 +107,143 @@
 
 /* Card Styles */
 .task-card {
-    background-color: rgb(71, 71, 82);
+    background-color: #292930;
     border-radius: 6px;
-    padding: 10px 12px;
-    margin-bottom: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
     border-width: 1px;
-    border-color: rgb(60, 60, 70);
+    border-color: #35353e;
     white-space: normal;
 
-    /* FIX: Card full width */
     width: 100%;
     flex-grow: 0;
     flex-shrink: 0;
 }
 
 .task-card:hover {
-    background-color: rgb(81, 81, 92);
-    border-color: rgb(100, 100, 140);
+    background-color: #31313a;
+    border-color: #4b4b5c;
+}
+
+/* Tag Strip Inside Card */
+.task-card-tags-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.task-card-tag {
+    font-size: 10px;
+    -unity-font-style: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
 }
 
 .task-title {
     font-size: 13px;
     -unity-font-style: bold;
-    color: rgb(240, 240, 240);
+    color: #f0f0f0;
+    white-space: normal;
 }
 
 .task-description {
     font-size: 11px;
-    color: rgb(180, 180, 180);
+    color: #a0a0a0;
     margin-top: 5px;
 }
 
 .card-footer {
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 8px;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .task-date {
     font-size: 10px;
-    color: rgb(130, 130, 130);
+    color: #888;
+    background-color: #222;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.task-badges-container {
+    flex-direction: row;
+    align-items: center;
+}
+
+.attachment-badge {
+    flex-direction: row;
+    align-items: center;
+    background-color: #33333d;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-right: 4px;
+}
+
+.attachment-badge-icon {
+    font-size: 10px;
+    color: #aaa;
+    margin-right: 2px;
+}
+
+.attachment-badge-text {
+    font-size: 10px;
+    color: #ccc;
+    -unity-font-style: bold;
+}
+
+.assignee-avatar-container {
+    flex-direction: row;
+}
+
+.assignee-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-left: -6px; /* Overlap effect */
+    border-width: 1px;
+    border-color: #292930;
+}
+
+.assignee-avatar-text {
+    font-size: 10px;
+    -unity-font-style: bold;
+    color: white;
+}
+
+.priority-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+}
+
+.priority-text {
+    font-size: 10px;
+    -unity-font-style: bold;
+    color: white;
 }
 
 .delete-button {
     width: 20px;
     height: 20px;
-    font-size: 16px;
-    background-color: rgb(153, 51, 51);
-    color: white;
+    font-size: 14px;
+    background-color: transparent;
+    color: #888;
     border-width: 0;
     padding: 0;
     border-radius: 3px;
 }
 
 .delete-button:hover {
-    background-color: rgb(200, 60, 60);
+    color: #ff5e5e;
 }
 
 /* Dialog Overlay */
@@ -178,34 +253,36 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.7);
     align-items: center;
     justify-content: center;
     display: none;
 }
 
 .dialog {
-    width: 600px;
+    width: 700px;
     max-width: 95%;
-    height: 85%;
-    max-height: 90%;
-    background-color: rgb(30, 30, 30);
-    border-radius: 12px;
+    height: 90%;
+    max-height: 95%;
+    background-color: #1e1e24;
+    border-radius: 8px;
     border-width: 1px;
-    border-color: rgb(80, 80, 100);
+    border-color: #33333d;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
 .dialog-header {
-    background-color: rgb(88, 101, 242);
-    padding: 18px 20px;
+    background-color: #24242b;
+    padding: 16px 20px;
     flex-shrink: 0;
+    border-bottom-width: 1px;
+    border-bottom-color: #1c1c22;
 }
 
 .dialog-title-text {
-    font-size: 16px;
+    font-size: 18px;
     -unity-font-style: bold;
     color: white;
 }
@@ -218,15 +295,15 @@
 }
 
 .dialog-content-container {
-    padding: 20px;
+    padding: 24px;
 }
 
 /* Footer Fixed */
 .dialog-footer {
-    padding: 15px 20px;
-    background-color: rgb(35, 35, 35);
+    padding: 16px 20px;
+    background-color: #24242b;
     border-top-width: 1px;
-    border-top-color: rgb(60, 60, 60);
+    border-top-color: #1c1c22;
     flex-shrink: 0;
     flex-direction: row;
     justify-content: space-between;
@@ -234,33 +311,31 @@
 
 /* Inputs & Drop Area */
 .field-label {
-    color: rgb(180, 180, 180);
+    color: #a0a0a0;
     font-size: 12px;
-    -unity-font-style: bold;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .modern-input > .unity-base-text-field__input {
-    background-color: rgb(18, 18, 18);
+    background-color: #141418;
     border-width: 1px;
-    border-color: rgb(60, 60, 60);
+    border-color: #2a2a32;
     border-radius: 4px;
-    padding: 8px;
-    color: rgb(240, 240, 240);
+    padding: 8px 10px;
+    color: #e0e0e0;
     font-size: 13px;
 }
 
 .modern-input > .unity-base-text-field__input:focus {
-    border-color: rgb(88, 101, 242);
+    border-color: #4b68ff;
 }
 
 .input-multiline {
-    height: 60px;
-    margin-bottom: 10px;
+    height: 80px;
+    margin-bottom: 15px;
     flex-shrink: 0;
 }
 
-/* FIX HEIGHT: Increased from 200px to 280px to show roughly 3 rows */
 .drop-area {
     margin-top: 0;
     margin-bottom: 15px;
@@ -268,16 +343,16 @@
     min-height: 120px;
     height: 280px;
     border-width: 1px;
-    border-color: rgb(80, 80, 80);
-    border-radius: 6px;
-    background-color: rgba(0, 0, 0, 0.2);
+    border-color: #333;
+    border-radius: 4px;
+    background-color: #1a1a1e;
     overflow: hidden;
     position: relative;
 }
 
 .drop-area-hover {
-    border-color: rgb(88, 101, 242);
-    background-color: rgba(88, 101, 242, 0.1);
+    border-color: #4b68ff;
+    background-color: rgba(75, 104, 255, 0.1);
 }
 
 .drop-area-label {
@@ -285,8 +360,8 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    color: rgb(100, 100, 100);
-    font-size: 11px;
+    color: #666;
+    font-size: 12px;
     -unity-font-style: italic;
     picking-mode: ignore;
 }
@@ -308,13 +383,19 @@
 .grid-view .file-item {
     width: 60px;
     height: 70px;
-    margin: 3px;
+    margin: 4px;
     flex-grow: 1;
-    background-color: rgb(50, 50, 50);
+    background-color: #24242b;
     border-radius: 4px;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-width: 1px;
+    border-color: transparent;
+}
+
+.grid-view .file-item:hover {
+    border-color: #4b68ff;
 }
 
 .grid-view .file-icon-image {
@@ -326,7 +407,7 @@
 
 .grid-view .file-name {
     font-size: 9px;
-    color: rgb(200, 200, 200);
+    color: #ccc;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -341,11 +422,11 @@
     flex-direction: row;
     width: 98%;
     height: 28px;
-    margin-bottom: 2px;
-    background-color: rgb(45, 45, 45);
-    border-radius: 3px;
+    margin-bottom: 4px;
+    background-color: #24242b;
+    border-radius: 4px;
     align-items: center;
-    padding-left: 5px;
+    padding-left: 8px;
 }
 
 .list-view .file-icon-image {
@@ -356,8 +437,8 @@
 }
 
 .list-view .file-name {
-    font-size: 11px;
-    color: rgb(220, 220, 220);
+    font-size: 12px;
+    color: #ccc;
     flex-grow: 1;
 }
 
@@ -366,80 +447,95 @@
     height: 24px;
     background-color: transparent;
     border-width: 0;
-    border-radius: 3px;
+    border-radius: 4px;
     align-items: center;
     justify-content: center;
-    color: rgb(200, 200, 200);
+    color: #aaa;
 }
 
 .icon-button:hover {
-    background-color: rgb(70, 70, 70);
+    background-color: #333;
 }
 
 .active-view-btn {
-    background-color: rgb(88, 101, 242);
+    background-color: #4b68ff;
     color: white;
 }
 
 .dropdown-row {
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
-    margin-top: 5px;
+    margin-bottom: 12px;
     flex-shrink: 0;
 }
 
-.modern-dropdown {
-    margin-top: 5px;
-}
-
 .modern-dropdown > .unity-base-field__input {
-    background-color: rgb(20, 20, 20);
-    border-color: rgb(60, 60, 60);
+    background-color: #141418;
+    border-color: #2a2a32;
     border-radius: 4px;
-    padding: 6px;
-    color: rgb(220, 220, 220);
+    padding: 6px 10px;
+    color: #e0e0e0;
 }
 
 .primary-button {
-    background-color: rgb(76, 102, 204);
+    background-color: #4b68ff;
     color: white;
-    padding: 8px 15px;
+    padding: 8px 16px;
     border-radius: 4px;
     border-width: 0;
     -unity-font-style: bold;
 }
 
 .primary-button:hover {
-    background-color: rgb(96, 122, 224);
+    background-color: #5b76ff;
 }
 
 .primary-button-large {
-    background-color: rgb(88, 101, 242);
+    background-color: #4b68ff;
     color: white;
     font-size: 13px;
     -unity-font-style: bold;
-    padding: 12px 25px;
-    border-radius: 6px;
+    padding: 10px 20px;
+    border-radius: 4px;
     border-width: 0;
     flex-grow: 1;
-    margin-left: 5px;
+    margin-left: 8px;
 }
 
 .primary-button-large:hover {
-    background-color: rgb(71, 82, 196);
+    background-color: #5b76ff;
 }
 
 .secondary-button {
-    background-color: rgb(70, 70, 70);
-    color: rgb(220, 220, 220);
-    padding: 12px 25px;
-    border-radius: 6px;
+    background-color: #3a3a44;
+    color: #d0d0d0;
+    padding: 10px 20px;
+    border-radius: 4px;
     border-width: 0;
     flex-grow: 1;
-    margin-right: 5px;
+    margin-right: 8px;
 }
 
 .secondary-button:hover {
-    background-color: rgb(90, 90, 90);
+    background-color: #444450;
+}
+
+/* Tabs */
+.tab-button {
+    background-color: transparent;
+    border-width: 0;
+    color: #a0a0a0;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.tab-button:hover {
+    background-color: #222226;
+}
+
+.tab-active {
+    background-color: #2a2a32;
+    color: white;
+    -unity-font-style: bold;
 }
